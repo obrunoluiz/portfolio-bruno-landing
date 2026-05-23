@@ -677,13 +677,9 @@ del {
   cursor: pointer;
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
-  opacity: 0;
+  opacity: 1;
   pointer-events: auto;
   outline: none;
-}
-
-.slide-marquee:hover .marquee-btn {
-  opacity: 1;
 }
 
 .marquee-btn.prev {
