@@ -1,0 +1,21 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Check verde 3D</title>
+  <path d="M81 162L132 213L247 98" stroke="#063F1F" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M81 151L132 202L247 87" stroke="url(#checkMain)" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M86 132L132 178L240 70" stroke="url(#checkHighlight)" stroke-width="23" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>
+  <path d="M82 152L132 202L247 87" stroke="#18B957" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity=".32"/>
+  <ellipse cx="164" cy="251" rx="92" ry="24" fill="#000" opacity=".28"/>
+  <defs>
+    <linearGradient id="checkMain" x1="77" y1="89" x2="228" y2="234" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9BFF5E"/>
+      <stop offset=".38" stop-color="#25F474"/>
+      <stop offset=".74" stop-color="#0BBE53"/>
+      <stop offset="1" stop-color="#047B35"/>
+    </linearGradient>
+    <linearGradient id="checkHighlight" x1="81" y1="81" x2="195" y2="185" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".38" stop-color="#D7FFC9"/>
+      <stop offset="1" stop-color="#69FF8A" stop-opacity=".15"/>
+    </linearGradient>
+  </defs>
+</svg>
