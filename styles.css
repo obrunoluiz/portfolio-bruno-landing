@@ -31,6 +31,8 @@
 html {
   scroll-behavior: smooth;
   cursor: url("assets/cursor.svg"), auto;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 html.click,
@@ -635,6 +637,8 @@ del {
 
 .slide-marquee {
   padding: 36px 0;
+  overflow: hidden;
+  width: 100%;
 }
 
 .slide-track {
