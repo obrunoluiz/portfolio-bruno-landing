@@ -423,6 +423,14 @@ del {
   background: #000;
 }
 
+.section,
+.green-band,
+.checkout-section,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 780px;
+}
+
 .section.intro {
   position: relative;
   overflow: hidden;
@@ -436,7 +444,7 @@ del {
   z-index: -1;
   background: 
     linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.2) 80%, #000 100%),
-    url("assets/intro-bg.png") center center / cover no-repeat;
+    url("assets/intro-bg.webp") center center / cover no-repeat;
   opacity: 0.32;
   pointer-events: none;
 }
@@ -782,6 +790,7 @@ del {
 
 .skill-card img {
   width: 88%;
+  height: auto;
   max-height: 210px;
   object-fit: contain;
   margin: auto auto -24px;
@@ -963,7 +972,7 @@ del {
 .contact-section {
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.84)),
-    url("assets/contact-bg.png") center center / cover no-repeat;
+    url("assets/contact-bg.webp") center center / cover no-repeat;
 }
 
 .checkout-card {
@@ -1170,6 +1179,7 @@ del {
 
 .whatsapp-float img {
   width: 46px;
+  height: auto;
 }
 
 .reveal {
@@ -1462,6 +1472,27 @@ del {
 
   .skill-card {
     min-height: 380px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal,
+  .reveal.from-left,
+  .reveal.from-right,
+  .reveal.from-top,
+  .reveal.from-bottom {
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 }
 

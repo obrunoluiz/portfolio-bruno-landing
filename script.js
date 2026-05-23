@@ -12,6 +12,8 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   const scrollContainer = marquee.querySelector(".marquee-scroll-container") || marquee;
   const track = marquee.querySelector(".slide-track");
@@ -21,8 +23,10 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   const originalChildren = [...track.children];
   originalChildren.forEach((child) => track.appendChild(child.cloneNode(true)));
   
-  let isPaused = false;
+  let isPaused = prefersReducedMotion;
+  let isVisible = false;
   const isReverse = track.classList.contains("reverse");
+  let animationFrame = 0;
   
   // Pause on hover
   marquee.addEventListener("mouseenter", () => { isPaused = true; });
@@ -31,7 +35,7 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   // Scroll Loop
   const scrollSpeed = 0.85;
   function scrollStepLoop() {
-    if (!isPaused) {
+    if (!isPaused && isVisible) {
       const limit = track.scrollWidth / 2;
       if (isReverse) {
         scrollContainer.scrollLeft -= scrollSpeed;
@@ -45,15 +49,23 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
         }
       }
     }
-    requestAnimationFrame(scrollStepLoop);
+    animationFrame = requestAnimationFrame(scrollStepLoop);
   }
+
+  const marqueeObserver = new IntersectionObserver(
+    ([entry]) => {
+      isVisible = entry.isIntersecting;
+    },
+    { rootMargin: "220px 0px" },
+  );
+  marqueeObserver.observe(marquee);
   
   // Start after tiny layout calculation delay
   setTimeout(() => {
     if (isReverse) {
       scrollContainer.scrollLeft = track.scrollWidth / 2;
     }
-    requestAnimationFrame(scrollStepLoop);
+    animationFrame = requestAnimationFrame(scrollStepLoop);
   }, 150);
   
   // Arrow Button Listeners
@@ -84,6 +96,8 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
       triggerManualScroll(stepAmount);
     });
   }
+
+  window.addEventListener("pagehide", () => cancelAnimationFrame(animationFrame), { once: true });
 });
 
 document.querySelectorAll(".faq-btn").forEach((button) => {
