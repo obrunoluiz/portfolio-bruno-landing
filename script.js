@@ -13,6 +13,7 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
 document.querySelectorAll(".slide-marquee").forEach((marquee) => {
+  const scrollContainer = marquee.querySelector(".marquee-scroll-container") || marquee;
   const track = marquee.querySelector(".slide-track");
   if (!track) return;
   
@@ -33,14 +34,14 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
     if (!isPaused) {
       const limit = track.scrollWidth / 2;
       if (isReverse) {
-        marquee.scrollLeft -= scrollSpeed;
-        if (marquee.scrollLeft <= 0) {
-          marquee.scrollLeft = limit;
+        scrollContainer.scrollLeft -= scrollSpeed;
+        if (scrollContainer.scrollLeft <= 0) {
+          scrollContainer.scrollLeft = limit;
         }
       } else {
-        marquee.scrollLeft += scrollSpeed;
-        if (marquee.scrollLeft >= limit) {
-          marquee.scrollLeft = 0;
+        scrollContainer.scrollLeft += scrollSpeed;
+        if (scrollContainer.scrollLeft >= limit) {
+          scrollContainer.scrollLeft = 0;
         }
       }
     }
@@ -50,7 +51,7 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   // Start after tiny layout calculation delay
   setTimeout(() => {
     if (isReverse) {
-      marquee.scrollLeft = track.scrollWidth / 2;
+      scrollContainer.scrollLeft = track.scrollWidth / 2;
     }
     requestAnimationFrame(scrollStepLoop);
   }, 150);
@@ -63,7 +64,7 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   
   function triggerManualScroll(offset) {
     isPaused = true;
-    marquee.scrollBy({ left: offset, behavior: "smooth" });
+    scrollContainer.scrollBy({ left: offset, behavior: "smooth" });
     
     // Resume auto-scroll after smooth scroll finishes
     clearTimeout(marquee.resumeTimeout);

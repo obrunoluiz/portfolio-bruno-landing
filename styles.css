@@ -637,6 +637,10 @@ del {
 
 .slide-marquee {
   position: relative;
+  width: 100%;
+}
+
+.marquee-scroll-container {
   padding: 36px 0;
   overflow: hidden;
   width: 100%;
