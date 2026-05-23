@@ -1,0 +1,10 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Símbolo de dinheiro</title>
+  <rect x="28" y="28" width="264" height="264" rx="64" fill="#0D0D0D"/>
+  <rect x="75" y="100" width="170" height="122" rx="24" fill="#25F474"/>
+  <rect x="98" y="123" width="124" height="76" rx="17" stroke="#0D0D0D" stroke-width="10"/>
+  <circle cx="160" cy="161" r="29" fill="#0D0D0D"/>
+  <path d="M160 132V190M174 147C169 143 164 141 158 141C150 141 145 145 145 151C145 158 151 161 162 164C174 168 180 174 180 184C180 196 171 203 158 203C149 203 141 200 135 195" stroke="#25F474" stroke-width="10" stroke-linecap="round"/>
+  <path d="M91 87L224 65L233 99H91V87Z" fill="#FFFFFF"/>
+  <path d="M89 233H231L223 257L91 235L89 233Z" fill="#FF7E00"/>
+</svg>

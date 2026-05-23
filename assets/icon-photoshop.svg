@@ -1,0 +1,7 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Símbolo do Photoshop</title>
+  <rect x="28" y="28" width="264" height="264" rx="64" fill="#001E36"/>
+  <rect x="55" y="55" width="210" height="210" rx="42" stroke="#31A8FF" stroke-width="14"/>
+  <path d="M91 218V96H144C170 96 189 113 189 139C189 166 169 184 141 184H122V218H91ZM122 157H139C150 157 157 151 157 140C157 130 150 124 139 124H122V157Z" fill="#31A8FF"/>
+  <path d="M197 216C184 216 173 213 164 207V181C174 188 185 192 197 192C207 192 212 189 212 184C212 179 207 177 194 173C174 168 164 158 164 141C164 122 179 110 203 110C215 110 225 112 234 117V141C224 136 214 133 204 133C196 133 191 136 191 141C191 146 196 148 209 151C231 157 240 167 240 184C240 204 224 216 197 216Z" fill="#31A8FF"/>
+</svg>

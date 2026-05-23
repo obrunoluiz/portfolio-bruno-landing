@@ -1,0 +1,14 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Símbolo Hotmart</title>
+  <rect x="28" y="28" width="264" height="264" rx="64" fill="#0D0D0D"/>
+  <path d="M166 260C115 260 78 223 78 176C78 133 105 105 127 83C140 70 150 58 152 44C188 66 207 94 207 123C207 135 204 145 199 154C215 145 225 130 229 111C253 132 266 158 266 185C266 228 224 260 166 260Z" fill="url(#flame)"/>
+  <path d="M163 226C139 226 122 209 122 186C122 168 133 154 145 141C154 131 160 121 161 108C184 124 197 144 197 164C197 171 195 177 192 183C202 178 209 168 212 156C224 169 231 185 231 200C231 217 207 226 163 226Z" fill="#0D0D0D" fill-opacity=".24"/>
+  <path d="M119 92H147V147H177V92H205V231H177V174H147V231H119V92Z" fill="white"/>
+  <defs>
+    <linearGradient id="flame" x1="93" y1="65" x2="250" y2="252" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3B22"/>
+      <stop offset=".55" stop-color="#FF7E00"/>
+      <stop offset="1" stop-color="#FFD45A"/>
+    </linearGradient>
+  </defs>
+</svg>
