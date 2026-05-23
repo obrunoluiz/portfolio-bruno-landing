@@ -414,6 +414,24 @@ del {
   background: #000;
 }
 
+.section.intro {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.section.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: 
+    linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.2) 80%, #000 100%),
+    url("assets/intro-bg.png") center center / cover no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
 .benefit-row {
   width: min(1180px, 100%);
   margin: 0 auto 88px;
