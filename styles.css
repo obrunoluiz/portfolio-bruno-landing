@@ -740,7 +740,7 @@ del {
 
 .slide-marquee.landscape .slide-track img {
   width: min(390px, 50vw);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 646 / 363;
   object-position: center 25%;
 }
 
