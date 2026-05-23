@@ -636,6 +636,7 @@ del {
 }
 
 .slide-marquee {
+  position: relative;
   padding: 36px 0;
   overflow: hidden;
   width: 100%;
@@ -645,11 +646,6 @@ del {
   display: flex;
   width: max-content;
   gap: 22px;
-  animation: slideMarquee 52s linear infinite;
-}
-
-.slide-track:hover {
-  animation-play-state: paused;
 }
 
 .slide-track img {
@@ -658,10 +654,66 @@ del {
   object-fit: cover;
   border-radius: 18px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  pointer-events: none;
 }
 
-.slide-track.reverse {
-  animation: slideMarqueeReverse 52s linear infinite;
+.marquee-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(12, 12, 12, 0.82);
+  border: 1px solid rgba(255, 126, 0, 0.28);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: auto;
+  outline: none;
+}
+
+.slide-marquee:hover .marquee-btn {
+  opacity: 1;
+}
+
+.marquee-btn.prev {
+  left: 20px;
+}
+
+.marquee-btn.next {
+  right: 20px;
+}
+
+.marquee-btn:hover {
+  background: var(--green);
+  color: #000;
+  border-color: var(--green);
+  box-shadow: 0 0 15px rgba(255, 126, 0, 0.45);
+}
+
+@media (max-width: 1024px) {
+  .marquee-btn {
+    opacity: 1;
+    width: 44px;
+    height: 44px;
+    background: rgba(12, 12, 12, 0.9);
+  }
+  .marquee-btn.prev {
+    left: 10px;
+  }
+  .marquee-btn.next {
+    right: 10px;
+  }
 }
 
 .slide-marquee.landscape {

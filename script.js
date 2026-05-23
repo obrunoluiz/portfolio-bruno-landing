@@ -12,8 +12,77 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-document.querySelectorAll(".slide-track").forEach((track) => {
-  [...track.children].forEach((child) => track.appendChild(child.cloneNode(true)));
+document.querySelectorAll(".slide-marquee").forEach((marquee) => {
+  const track = marquee.querySelector(".slide-track");
+  if (!track) return;
+  
+  // Clone children for infinite looping
+  const originalChildren = [...track.children];
+  originalChildren.forEach((child) => track.appendChild(child.cloneNode(true)));
+  
+  let isPaused = false;
+  const isReverse = track.classList.contains("reverse");
+  
+  // Pause on hover
+  marquee.addEventListener("mouseenter", () => { isPaused = true; });
+  marquee.addEventListener("mouseleave", () => { isPaused = false; });
+  
+  // Scroll Loop
+  const scrollSpeed = 0.85;
+  function scrollStepLoop() {
+    if (!isPaused) {
+      const limit = track.scrollWidth / 2;
+      if (isReverse) {
+        marquee.scrollLeft -= scrollSpeed;
+        if (marquee.scrollLeft <= 0) {
+          marquee.scrollLeft = limit;
+        }
+      } else {
+        marquee.scrollLeft += scrollSpeed;
+        if (marquee.scrollLeft >= limit) {
+          marquee.scrollLeft = 0;
+        }
+      }
+    }
+    requestAnimationFrame(scrollStepLoop);
+  }
+  
+  // Start after tiny layout calculation delay
+  setTimeout(() => {
+    if (isReverse) {
+      marquee.scrollLeft = track.scrollWidth / 2;
+    }
+    requestAnimationFrame(scrollStepLoop);
+  }, 150);
+  
+  // Arrow Button Listeners
+  const prevBtn = marquee.querySelector(".marquee-btn.prev");
+  const nextBtn = marquee.querySelector(".marquee-btn.next");
+  
+  const stepAmount = isReverse ? 420 : 300;
+  
+  function triggerManualScroll(offset) {
+    isPaused = true;
+    marquee.scrollBy({ left: offset, behavior: "smooth" });
+    
+    // Resume auto-scroll after smooth scroll finishes
+    clearTimeout(marquee.resumeTimeout);
+    marquee.resumeTimeout = setTimeout(() => {
+      isPaused = false;
+    }, 750);
+  }
+  
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      triggerManualScroll(-stepAmount);
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      triggerManualScroll(stepAmount);
+    });
+  }
 });
 
 document.querySelectorAll(".faq-btn").forEach((button) => {
