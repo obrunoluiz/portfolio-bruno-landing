@@ -30,29 +30,8 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: url("assets/cursor.svg"), auto;
   overflow-x: hidden;
   max-width: 100%;
-}
-
-html.click,
-html.click a,
-html.click button,
-a:hover,
-button:hover {
-  cursor: url("assets/hover.svg"), auto;
-}
-
-html::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  pointer-events: none;
-  background-image: radial-gradient(at 20% 80%, #fff 1px, transparent 0);
-  background-size: 3px 3px;
-  opacity: 0.04;
-  mix-blend-mode: plus-lighter;
 }
 
 body {
@@ -427,7 +406,6 @@ del {
 .green-band,
 .checkout-section,
 .faq-section {
-  content-visibility: auto;
   contain-intrinsic-size: 1px 780px;
 }
 
@@ -617,10 +595,11 @@ del {
 
 .green-band {
   position: relative;
+  contain: paint;
   overflow: hidden;
   padding: clamp(70px, 8vw, 110px) 20px;
   background:
-    radial-gradient(circle at 20% 5%, rgba(255, 255, 255, 0.28), transparent 16%),
+    radial-gradient(circle at 20% 5%, rgba(255, 255, 255, 0.2), transparent 15%),
     linear-gradient(135deg, #ffad4f, #ff7e00 46%, #6f3500);
   color: #031300;
 }
@@ -629,9 +608,9 @@ del {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.24;
+  opacity: 0.16;
   background-image: radial-gradient(circle, #fff 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 34px 34px;
   pointer-events: none;
 }
 
@@ -785,7 +764,18 @@ del {
 }
 
 .skill-card {
+  contain: paint;
   min-height: 430px;
+}
+
+.target .skill-card {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+}
+
+.target .skill-card::after {
+  box-shadow:
+    0 42px 36px rgba(255, 126, 0, 0.16),
+    0 14px 14px rgba(255, 126, 0, 0.12);
 }
 
 .skill-card img {
@@ -800,20 +790,16 @@ del {
 
 .skill-card img.glow-check {
   filter:
-    drop-shadow(0 0 14px rgba(37, 244, 116, 0.55))
-    drop-shadow(0 0 36px rgba(37, 244, 116, 0.22));
-  animation:
-    floatUpDown 7s ease-in-out infinite,
-    greenGlowPulse 2.8s ease-in-out infinite;
+    drop-shadow(0 0 12px rgba(37, 244, 116, 0.46))
+    drop-shadow(0 0 24px rgba(37, 244, 116, 0.18));
+  animation: floatUpDown 7s ease-in-out infinite;
 }
 
 .skill-card img.orange-glow {
   filter:
-    drop-shadow(0 0 15px rgba(255, 126, 0, 0.6))
-    drop-shadow(0 0 38px rgba(255, 70, 0, 0.24));
-  animation:
-    floatUpDown 7s ease-in-out infinite,
-    orangeGlowPulse 2.9s ease-in-out infinite;
+    drop-shadow(0 0 12px rgba(255, 126, 0, 0.5))
+    drop-shadow(0 0 26px rgba(255, 70, 0, 0.18));
+  animation: floatUpDown 7s ease-in-out infinite;
 }
 
 .video-section {
@@ -1170,6 +1156,7 @@ del {
   background: #16c45b;
   box-shadow: 0 0 28px rgba(22, 196, 91, 0.55);
   animation: shake 2s infinite;
+  will-change: transform;
 }
 
 .whatsapp-float:hover {
@@ -1184,11 +1171,9 @@ del {
 
 .reveal {
   opacity: 0;
-  filter: blur(6px);
   transition:
     opacity 0.9s ease,
-    transform 0.9s ease,
-    filter 0.9s ease;
+    transform 0.9s ease;
 }
 
 .reveal.from-left {
@@ -1209,13 +1194,11 @@ del {
 
 .reveal.visible {
   opacity: 1;
-  filter: blur(0);
   transform: translate(0);
 }
 
 .hero .reveal {
   opacity: 1;
-  filter: blur(0);
   transform: translate(0);
 }
 
@@ -1225,6 +1208,20 @@ del {
 
 .float-fast {
   animation: floatSmall 7s ease-in-out infinite;
+}
+
+.is-scrolling .text-marquee,
+.is-scrolling .floating-ribbon,
+.is-scrolling .skill-card img,
+.is-scrolling .whatsapp-float,
+.is-scrolling .cta::before {
+  animation-play-state: paused;
+}
+
+.is-scrolling .hero-logo,
+.is-scrolling .contact-logo,
+.is-scrolling .skill-card img {
+  filter: none;
 }
 
 @keyframes gradientMove {

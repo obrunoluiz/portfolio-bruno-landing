@@ -13,6 +13,25 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let isScrolling = false;
+let scrollStopTimer;
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!isScrolling) {
+      isScrolling = true;
+      document.documentElement.classList.add("is-scrolling");
+    }
+
+    clearTimeout(scrollStopTimer);
+    scrollStopTimer = setTimeout(() => {
+      isScrolling = false;
+      document.documentElement.classList.remove("is-scrolling");
+    }, 140);
+  },
+  { passive: true },
+);
 
 document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   const scrollContainer = marquee.querySelector(".marquee-scroll-container") || marquee;
@@ -35,7 +54,7 @@ document.querySelectorAll(".slide-marquee").forEach((marquee) => {
   // Scroll Loop
   const scrollSpeed = 0.85;
   function scrollStepLoop() {
-    if (!isPaused && isVisible) {
+    if (!isPaused && isVisible && !isScrolling) {
       const limit = track.scrollWidth / 2;
       if (isReverse) {
         scrollContainer.scrollLeft -= scrollSpeed;
